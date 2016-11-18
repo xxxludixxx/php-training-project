@@ -1,3 +1,5 @@
+<!-- PHP Functions -->
+<?php require_once("../includes/functions.php"); ?>
 <!-- Header -->
 <?php include("../includes/layouts/header.php"); ?>
 
