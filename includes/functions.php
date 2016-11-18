@@ -51,32 +51,48 @@
         }
     }
 
-function find_page_by_id($page_id) {
-    global $connection;
+    function find_page_by_id($page_id) {
+        global $connection;
 
-    $safe_page_id = mysqli_real_escape_string($connection, $page_id);
+        $safe_page_id = mysqli_real_escape_string($connection, $page_id);
 
-    $query = "SELECT * ";
-    $query .= "FROM pages ";
-    $query .= "WHERE id = {$safe_page_id} ";
-    $query .= "LIMIT 1";
-    $page_set = mysqli_query($connection, $query);
-    confirm_query($page_set);
-    if ($page = mysqli_fetch_assoc($page_set)) {
-        return $page;
-    } else {
-        return null;
+        $query = "SELECT * ";
+        $query .= "FROM pages ";
+        $query .= "WHERE id = {$safe_page_id} ";
+        $query .= "LIMIT 1";
+        $page_set = mysqli_query($connection, $query);
+        confirm_query($page_set);
+        if ($page = mysqli_fetch_assoc($page_set)) {
+            return $page;
+        } else {
+            return null;
+        }
     }
-}
+
+    function find_selected_page() {
+        global $current_subject;
+        global $current_page;
+
+        if(isset($_GET["subject"])) {
+            $current_subject = find_subject_by_id($_GET["subject"]);
+            $current_page = null;
+        } elseif (isset($_GET["page"])) {
+            $current_subject = null;
+            $current_page = find_page_by_id($_GET["page"]);
+        } else {
+            $current_subject = null;
+            $current_page = null;
+        }
+    }
     // navigation takes 2 arguments
-    // - the currently selected subject ID (if any)
-    // - the currently selected page ID (if any)
-    function navigation($subject_id, $page_id) {
+    // - the current subject array or null
+    // - the current page array or null
+    function navigation($subject_array, $page_array) {
         $output = "<ul class=\"subjects\">";
         $subject_set = find_all_subjects();
         while ($subject = mysqli_fetch_assoc($subject_set)) {
             $output .= "<li";
-            if ($subject["id"] == $subject_id) {
+            if ($subject_array && $subject["id"] == $subject_array["id"]) {
                 $output .= " class=\"selected\"";
             }
             $output .= ">";
@@ -90,7 +106,7 @@ function find_page_by_id($page_id) {
             $output .= "<ul class=\"pages\">";
             while ($page = mysqli_fetch_assoc($page_set)) {
                 $output .= "<li";
-                if ($page["id"] == $page_id) {
+                if ($page_array && $page["id"] == $page_array["id"]) {
                     $output .= " class=\"selected\"";
                 }
                 $output .= ">";
