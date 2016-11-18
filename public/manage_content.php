@@ -1,11 +1,16 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+<!-- Header -->
+<?php include("../includes/layouts/header.php"); ?>
 
-<html lang="en">
-	<head>
-		<title>Widget Corp.</title>
-	</head>
-	<body>
-			SOME CRAZY SHIIIT!!!
-	</body>
-</html>
+<!-- Main content -->
+<div id="main">
+	<div id="navigation">
+		&nbsp;
+	</div>
+	<div id="page">
+		<h2>Manage Content</h2>
+
+	</div>
+</div>
+
+<!-- Footer -->
+<?php include("../includes/layouts/footer.php"); ?>
