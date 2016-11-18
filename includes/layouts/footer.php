@@ -1,5 +1,5 @@
 <!-- Footer -->
-<div id="footer">Copyright 2016, Ludi Corp.</div>
+<div id="footer">Copyright <?php echo htmlentities(date("Y")) ?>, Ludi Corp.</div>
 
 </body>
 </html>

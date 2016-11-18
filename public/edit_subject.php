@@ -31,7 +31,7 @@
         $query .= "LIMIT 1";
         $result = mysqli_query($connection, $query);
 
-        if ($result && mysqli_affected_rows($connection) == 1) {
+        if ($result && mysqli_affected_rows($connection) >= 0) {
             // Success
             $_SESSION["message"] = "Subject updated.";
             redirect_to("manage_content.php");
@@ -56,14 +56,14 @@
     <div id="page">
         <?php
             if (!empty($message)) {
-                echo "<div class=\"message\">" . $message . "</div>";
+                echo "<div class=\"message\">" . htmlentities($message) . "</div>";
             }
         ?>
         <?php echo form_errors($errors); ?>
-        <h2>Edit Subject: <?php echo $current_subject["menu_name"]; ?></h2>
-        <form action="edit_subject.php?subject=<?php echo $current_subject["id"]; ?>" method="post">
+        <h2>Edit Subject: <?php echo htmlentities($current_subject["menu_name"]); ?></h2>
+        <form action="edit_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>" method="post">
             <p>Menu name:
-                <input type="text" name="menu_name" value="<?php echo $current_subject["menu_name"] ?>" />
+                <input type="text" name="menu_name" value="<?php echo htmlentities($current_subject["menu_name"]); ?>" />
             </p>
             <p>Position:
                 <select name="position">
@@ -90,7 +90,7 @@
         <a href="manage_content.php">Cancel</a>
         &nbsp;
         &nbsp;
-        <a href="delete_subject.php?subject=<?php echo $current_subject["id"]; ?>" onclick="return confirm('Are you sure?');">Delete subject</a>
+        <a href="delete_subject.php?subject=<?php echo urlencode($current_subject["id"]); ?>" onclick="return confirm('Are you sure?');">Delete subject</a>
     </div>
 </div>
 <!-- Footer -->

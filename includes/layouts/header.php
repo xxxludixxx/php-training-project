@@ -8,5 +8,5 @@
 <body>
 <!-- Header -->
 <div id="header">
-	<h1>Widget Corp.</h1>
+	<h1><a href="../../public/admin.php" style="color: white; text-decoration: none">Widget Corp.</a></h1>
 </div>
