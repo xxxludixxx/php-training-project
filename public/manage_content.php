@@ -1,3 +1,4 @@
+<?php require_once ("../includes/session.php"); ?>
 <!-- Database connection -->
 <?php require_once ("../includes/db_connection.php"); ?>
 <!-- PHP Functions -->
@@ -14,6 +15,7 @@
         <a href="new_subject.php">+ Add a subject</a>
 	</div>
 	<div id="page">
+        <?php echo message(); ?>
 		<?php if ($current_subject) { ?>
             <h2>Manage Subject</h2>
 			Menu name: <?php echo $current_subject["menu_name"]; ?><br />
