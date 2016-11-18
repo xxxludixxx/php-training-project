@@ -9,5 +9,5 @@
 <body>
 <!-- Header -->
 <div id="header">
-	<h1>Widget Corp</h1>
+	<h1>Widget Corp. - your Widget Company</h1>
 </div>

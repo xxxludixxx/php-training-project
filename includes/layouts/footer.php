@@ -3,3 +3,9 @@
 
 </body>
 </html>
+<?php
+    // Close database connection if opened
+    if (isset($connection)) {
+        mysqli_close($connection);
+    }
+?>

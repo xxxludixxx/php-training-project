@@ -1,3 +1,5 @@
+<!-- Database connection -->
+<?php require_once ("../includes/db_connection.php"); ?>
 <!-- PHP Functions -->
 <?php require_once("../includes/functions.php"); ?>
 <!-- Header -->
