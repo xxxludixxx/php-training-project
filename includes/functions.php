@@ -1,4 +1,15 @@
 <?php
+    function redirect_to($new_location) {
+        header("Location: " . $new_location);
+        exit;
+    }
+
+    function mysql_prep($string) {
+        global $connection;
+
+        $escaped_string = mysqli_real_escape_string($connection, $string);
+        return $escaped_string;
+    }
     // Test if there was a query error
     function confirm_query($result_set) {
         if(!$result_set) {
@@ -21,7 +32,7 @@
     function find_pages_for_subject($subject_id) {
         global $connection;
 
-        $safe_subject_id = mysqli_real_escape_string($connection, $subject_id);
+        $safe_subject_id = mysql_prep($subject_id);
 
         $query = "SELECT * ";
         $query .= "FROM pages ";
@@ -36,7 +47,7 @@
     function find_subject_by_id($subject_id) {
         global $connection;
 
-        $safe_subject_id = mysqli_real_escape_string($connection, $subject_id);
+        $safe_subject_id = mysql_prep($subject_id);
 
         $query = "SELECT * ";
         $query .= "FROM subjects ";
@@ -54,7 +65,7 @@
     function find_page_by_id($page_id) {
         global $connection;
 
-        $safe_page_id = mysqli_real_escape_string($connection, $page_id);
+        $safe_page_id = mysql_prep($page_id);
 
         $query = "SELECT * ";
         $query .= "FROM pages ";

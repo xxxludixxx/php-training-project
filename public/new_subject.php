@@ -1,19 +1,14 @@
-<!-- Database connection -->
 <?php require_once ("../includes/db_connection.php"); ?>
-<!-- PHP Functions -->
 <?php require_once("../includes/functions.php"); ?>
-<!-- Header -->
 <?php include("../includes/layouts/header.php"); ?>
 <?php find_selected_page(); ?>
 
-<!-- Main content -->
 <div id="main">
 	<div id="navigation">
 		<?php echo navigation($current_subject, $current_page); ?>
 	</div>
 	<div id="page">
 		<h2>Create Subject</h2>
-
 		<form action="create_subject.php" method="post">
 			<p>Subject name:
 				<input type="text" name="menu_name" value="" />
@@ -27,15 +22,14 @@
 							echo "<option value=\"{$count}\">${count}</option>";
 						}
 					?>
-
 				</select>
 			</p>
 			<p>Visible:
 				<input type="radio" name="visible" value="0" /> No
-				&nbsp;
+
 				<input type="radio" name="visible" value="1" /> Yes
 			</p>
-			<input type="submit" value="Create Subject" />
+			<input type="submit" name="submit" value="Create Subject" />
 		</form>
 		<br />
 		<a href="manage_content.php">Cancel</a>

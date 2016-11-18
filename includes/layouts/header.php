@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-	"http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -9,5 +8,5 @@
 <body>
 <!-- Header -->
 <div id="header">
-	<h1>Widget Corp. - your Widget Company</h1>
+	<h1>Widget Corp.</h1>
 </div>
