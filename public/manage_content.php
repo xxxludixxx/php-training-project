@@ -8,30 +8,13 @@
 <div id="main">
 	<div id="navigation">
 		<ul class="subjects">
-			<!-- Database query for subjects -->
-			<?php
-				$query  = "SELECT * ";
-				$query .= "FROM subjects ";
-				$query .= "WHERE visible = 1 ";
-				$query .= "ORDER BY position ASC";
-				$subject_set = mysqli_query($connection, $query);
-				confirm_query($subject_set);
-			?>
+			<?php $subject_set = find_all_subjects(); ?>
 			<?php
 				while($subject = mysqli_fetch_assoc($subject_set)) {
 			?>
 					<li>
 						<?php echo $subject["menu_name"]; ?>
-						<!-- Database query for pages -->
-						<?php
-							$query  = "SELECT * ";
-							$query .= "FROM pages ";
-							$query .= "WHERE visible = 1 ";
-							$query .= "AND subject_id = {$subject['id']} ";
-							$query .= "ORDER BY position ASC";
-							$page_set = mysqli_query($connection, $query);
-							confirm_query($page_set);
-						?>
+						<?php $page_set = find_pages_for_subject($subject['id']) ?>
 						<ul class="pages">
 							<?php
 								while($page = mysqli_fetch_assoc($page_set)) {
