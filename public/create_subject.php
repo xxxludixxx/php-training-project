@@ -2,18 +2,19 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php require_once("../includes/validation_functions.php"); ?>
-<?php if(isset($_POST['submit'])) {
-    // Process the form
-    $menu_name = mysql_prep($_POST["menu_name"]);
-    $position = (int) $_POST["position"];
-    $visible = (int) $_POST["visible"];
 
+<?php if(isset($_POST['submit'])) {
     // Validations
     $required_fields = array("menu_name", "position", "visible");
     validate_presences($required_fields);
 
     $fields_with_max_lengths = array("menu_name" => 30);
     validate_max_lengths($fields_with_max_lengths);
+
+    // Process the form
+    $menu_name = mysql_prep($_POST["menu_name"]);
+    $position = (int) $_POST["position"];
+    $visible = (int) $_POST["visible"];
 
     if(!empty($errors)) {
         $_SESSION["errors"] = $errors;
