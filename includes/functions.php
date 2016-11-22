@@ -3,7 +3,6 @@
         header("Location: " . $new_location);
         exit;
     }
-
     function mysql_prep($string) {
         global $connection;
 
@@ -78,25 +77,23 @@
             return null;
         }
     }
-
     function find_page_by_id($page_id) {
         global $connection;
 
-        $safe_page_id = mysql_prep($page_id);
+        $safe_page_id = mysqli_real_escape_string($connection, $page_id);
 
-        $query = "SELECT * ";
+        $query  = "SELECT * ";
         $query .= "FROM pages ";
         $query .= "WHERE id = {$safe_page_id} ";
         $query .= "LIMIT 1";
         $page_set = mysqli_query($connection, $query);
         confirm_query($page_set);
-        if ($page = mysqli_fetch_assoc($page_set)) {
+        if($page = mysqli_fetch_assoc($page_set)) {
             return $page;
         } else {
             return null;
         }
     }
-
     function find_selected_page() {
         global $current_subject;
         global $current_page;
