@@ -49,7 +49,7 @@
     } // end: if (isset($_POST['submit']))
 
 ?>
-
+<?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>
 <div id="main">
     <div id="navigation">

@@ -1,8 +1,6 @@
-<!-- Database connection -->
 <?php require_once ("../includes/db_connection.php"); ?>
-<!-- PHP Functions -->
 <?php require_once("../includes/functions.php"); ?>
-<!-- Header -->
+<?php $layout_context = "admin"; ?>
 <?php include("../includes/layouts/header.php"); ?>
 
 <!-- Main content -->
