@@ -28,7 +28,7 @@
                 <h3>Pages in this subject:</h3>
                 <ul>
                     <?php
-                        $subject_pages = find_pages_for_subject($current_subject["id"]);
+                        $subject_pages = find_pages_for_subject($current_subject["id"], false);
                         while($page = mysqli_fetch_assoc($subject_pages)) {
                             echo "<li>";
                             $safe_page_id = urlencode($page["id"]);
