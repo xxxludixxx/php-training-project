@@ -9,5 +9,5 @@
 <body>
 <!-- Header -->
 <div id="header">
-	<h1><a href="../../public/admin.php" style="color: white; text-decoration: none">Widget Corp<?php if ($layout_context == "admin") { echo " Admin";} ?></a></h1>
+	<h1><a href=<?php if ($layout_context == "admin") { echo "\"../../public/admin.php\""; } else {echo "\"../../public/index.php\""; } ?> style="color: white; text-decoration: none">Widget Corp<?php if ($layout_context == "admin") { echo " Admin";} ?></a></h1>
 </div>
