@@ -8,7 +8,7 @@
 <!-- Main content -->
 <div id="main">
 	<div id="navigation">
-		&nbsp;
+		<p><a href="index.php">&laquo; Go back to Main Page</a><br /></p>
 	</div>
 	<div id="page">
 		<h2>Admin Menu</h2>

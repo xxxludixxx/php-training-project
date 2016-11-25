@@ -28,7 +28,7 @@ if (isset($_POST['submit'])) {
 <?php include("../includes/layouts/header.php"); ?>
     <div id="main">
         <div id="navigation">
-            &nbsp;
+            <p><a href="index.php">&laquo; Go back to Main Page</a><br /></p>
         </div>
         <div id="page">
             <?= message(); ?>

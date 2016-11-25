@@ -8,6 +8,11 @@
 
 	<div id="main">
 		<div id="navigation">
+			<?php if(!isset($_SESSION["username"])) { ?>
+			<p><a href="login.php">Login &raquo;</a><br /></p>
+			<?php } else { ?>
+			<p><a href="admin.php">Admin Panel</a><br /></p>
+			<?php } ?>
 			<?php echo public_navigation($current_subject, $current_page); ?>
 		</div>
 		<div id="page">
