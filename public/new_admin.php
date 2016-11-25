@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
 
     if (empty($errors)) {
         $username = mysql_prep($_POST["username"]);
-        $hashed_password = mysql_prep($_POST["password"]);
+        $hashed_password = password_encrypt($_POST["password"]);
 
         $query  = "INSERT INTO admins (";
         $query .= "  username, hashed_password";

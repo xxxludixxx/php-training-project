@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     if (empty($errors)) {
         $id = $admin["id"];
         $username = mysql_prep($_POST["username"]);
-        $hashed_password = mysql_prep($_POST["password"]);
+        $hashed_password = password_encrypt($_POST["password"]);
 
         $query = "UPDATE admins SET ";
         $query .= "username = '{$username}', ";
