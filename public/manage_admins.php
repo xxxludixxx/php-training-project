@@ -8,7 +8,8 @@
     <!-- Main content -->
     <div id="main">
         <div id="navigation">
-            &nbsp;
+            <br />
+            <a href="admin.php">&laquo; Main menu</a><br />
         </div>
         <div id="page">
             <?php echo message(); ?>
@@ -21,7 +22,6 @@
                 <?php while($admin = mysqli_fetch_assoc($admin_set)) { ?>
                 <tr>
                     <td><?php echo htmlentities($admin["username"]); ?></td>
-                    <td><?php echo htmlentities($admin["hashed_password"]); ?></td>
                     <td><a href="edit_admin.php?id=<?php echo urlencode($admin['id']); ?>">Edit</a> </td>
                     <td><a href="delete_admin.php?id=<?php echo urlencode($admin['id']); ?>" onclick="return confirm('Are you sure?');">Delete</a></td>
                 </tr>
