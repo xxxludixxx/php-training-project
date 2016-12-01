@@ -8,33 +8,27 @@ function fieldname_as_text($fieldname) {
     return $fieldname;
 }
 
-// * presence
-// use trim() so empty spaces don't count
-// use === to avoid false positives
-// empty() would consider "0" to be empty
-function has_presence($value) {
+function is_present($value) {
     return isset($value) && $value !== "";
 }
 
-function validate_presences($required_fields) {
+function validate_presence($required_fields) {
     global $errors;
     foreach ($required_fields as $field) {
         $value = trim($_POST[$field]);
-        if (!has_presence($value)) {
-            $errors[$field] = fieldname_as_text($field) . " can't be blank";
+        if (!is_present($value)) {
+            $errors[$field] = fieldname_as_text($field) . " can't be blank.";
         }
     }
 }
-// * string length
-// max length
+
 function has_max_length($value, $max) {
     return strlen($value) <= $max;
 }
 
-function validate_max_lengths($fields_with_max_lengths) {
+function validate_max_length($fields_with_max_lengths) {
     global $errors;
-    // Expects an assoc. array
-    foreach($fields_with_max_lengths as $field => $max) {
+    foreach ($fields_with_max_lengths as $field => $max) {
         $value = trim($_POST[$field]);
         if (!has_max_length($value, $max)) {
             $errors[$field] = fieldname_as_text($field) . " is too long";
@@ -42,9 +36,18 @@ function validate_max_lengths($fields_with_max_lengths) {
     }
 }
 
-// * inclusion in a set
-function has_inclusion_in($value, $set) {
-    return in_array($value, $set);
+function password_match() {
+    if (isset($_POST["submit"]) && $_POST["password"] === $_POST["confirmed_password"]) {
+        return true;
+    }
+}
+
+function validate_password_match() {
+    global $errors;
+
+    if (!password_match()) {
+        $errors["password"] = "Your passwords did not match.";
+    }
 }
 
 ?>
