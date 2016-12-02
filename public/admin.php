@@ -4,17 +4,17 @@
 <?php confirm_logged_in(); ?>
 <?php $layout_context = "admin"; ?>
 <?php include("../includes/layout/header.php"); ?>
-    <div id="main">
-        <div class="row">
-            <div class="navbar">
-                <ul>
-                    <li><a href="new_post.php">Add new post</a></li>
-                    <li><a href="edit_post.php">Edit your posts</a></li>
-                    <li><a href="admin.php">Manage account</a></li>
-                </ul>
-            </div>
-            <div class="manage_account">
-
+    <div class="main">
+        <div id="nav">
+            <?php navigation(); ?>
+        </div>
+        <div id="content">
+            <div class="">
+                <div class="">
+                    <h2>Hi, <?= htmlentities($_SESSION["login"]); ?>. Manage your account:</h2>
+                </div>
+                <div class="manage_account">
+                </div>
             </div>
         </div>
     </div>

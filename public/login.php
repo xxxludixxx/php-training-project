@@ -15,7 +15,7 @@
             $found_admin = attempt_login($login, $password);
             if ($found_admin) {
                 $_SESSION["admin_id"] = $found_admin["id"];
-                $_SESSION["login"] = $found_admin["username"];
+                $_SESSION["login"] = $found_admin["login"];
                 redirect_to("admin.php");
             } else {
                 $_SESSION["message"] = "Username/password incorrect.";

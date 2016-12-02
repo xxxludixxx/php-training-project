@@ -1,0 +1,47 @@
+/* Site Colors:
+  #CAEBF2 - Sky
+  #A9A9A9 - Carbon
+  #FF3B3F - Watermelon
+  #373737 - Charcoal
+  #EFEFEF - Neutral
+*/
+
+html {
+    height: 100%; width: 100%;
+}
+body {
+    width: 100%; height: 100%;
+    margin: 0; padding: 0; border: 0;
+    font-family: sans-serif;
+    font-size: 13px; line-height: 15px;
+    background: #EFEFEF;
+}
+img {
+    border: none;
+}
+a {
+    color: #FF3B3F;
+    text-decoration: none;
+}
+
+.main {max-width: 100%; margin: auto;}
+
+#content, #nav {display: inline-block; height: 100%; }
+
+#content { width: 80%; margin: 0 0 0 150px; padding: 0; }
+
+#content div {
+    text-align: center;}
+
+#footer {
+    clear: both;
+    height: 5%; margin: 0; padding: 1em;
+    font-family: sans-serif;
+    text-align: center;
+    background: #FF3B3F;
+    box-shadow: -2px -2px 15px #A0A0A0;
+}
+
+#footer p {
+    color: #EFEFEF;
+}
