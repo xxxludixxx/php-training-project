@@ -2,6 +2,7 @@
 <?php require_once("../includes/db_connection.php"); ?>
 <?php require_once("../includes/functions.php"); ?>
 <?php require_once("../includes/validation_functions.php"); ?>
+<?php $layout_context = "public"; ?>
 <?php
     $username = "";
     if (isset($_POST['submit'])) {
@@ -27,7 +28,13 @@
 <?php include("../includes/layout/header.php"); ?>
 <!--Main content-->
 <div id="main">
-    <div id="login">
+    <div id="nav">
+        <?php navigation(); ?>
+    </div>
+    <div id="content">
+        <?php echo message(); ?>
+        <?php $errors = errors(); ?>
+        <?php echo format_errors($errors); ?>
         <form action="login.php" method="post">
             <table>
                 <tr><td><label for="login">Login:</label></td>

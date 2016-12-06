@@ -40,9 +40,13 @@
 <?php include("../includes/layout/header.php"); ?>
 <!--Main content-->
 <div id="main">
-    <div id="page">
-        <?= message(); ?>
-        <?= format_errors($errors); ?>
+    <div id="nav">
+        <?php navigation(); ?>
+    </div>
+    <div id="content">
+        <?php echo message(); ?>
+        <?php $errors = errors(); ?>
+        <?php echo format_errors($errors); ?>
         <form action="register.php" method="post">
             <table>
                 <tr><td>Login:</td>

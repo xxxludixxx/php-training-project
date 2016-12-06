@@ -136,7 +136,7 @@
 // NAVIGATION
     function navigation() {
         global $layout_context;
-        if ($layout_context !== "public") {
+        if ($layout_context == "admin") {
             echo admin_navigation();
         } else {
             echo public_navigation();

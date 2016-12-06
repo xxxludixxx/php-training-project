@@ -95,7 +95,17 @@ if(isset($_POST["submit"])) {
                             $category_count = mysqli_num_rows($category_set);
                             for ($count=1; $count <= $category_count ; $count++) {
                                 $category = mysqli_fetch_assoc($category_set);
-                                echo "<option value=\"{$category["id"]}\">{$category["category_name"]}</option>";
+                                $output = "<option value=\"";
+                                $output .= $category["id"];
+                                $output .= "\"";
+                                if($_GET["category"] == $category["id"]) {
+                                    $output .= "selected=\"selected\"";
+                                }
+                                $output .= ">";
+                                $output .= $category["category_name"];
+                                $output .= "</option>";
+
+                                echo $output;
                             }
                             ?>
                         </select>
