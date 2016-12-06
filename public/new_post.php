@@ -8,9 +8,10 @@
 if(isset($_POST["submit"])) {
     $required_fields = array("post_title", "content", "position", "visible");
     validate_presence($required_fields);
+    validate_category($_POST["category"]);
 
-    $post_title = mysql_prep($_POST["post_title"]);
-    $content = mysql_prep($_POST["content"]);
+    $post_title = htmlentities(mysql_prep($_POST["post_title"]));
+    $content = htmlentities(mysql_prep($_POST["content"]));
     $category= (int) $_POST["category"];
     $admin_id = (int) $_SESSION["admin_id"];
     $position = (int) $_POST["position"];

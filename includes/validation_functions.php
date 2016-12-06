@@ -50,4 +50,11 @@ function validate_password_match() {
     }
 }
 
+function validate_category($id) {
+    $category = find_category_by_id($id, false);
+    if($category["id"] !== $id) {
+        $_SESSION["message"] = "Category does not exist.";
+        redirect_to("edit_post.php");
+    }
+}
 ?>

@@ -13,10 +13,11 @@
         validate_password_match();
 
         if(empty($errors)) {
-            $login = mysql_prep($_POST["login"]);
-            $first_name = mysql_prep($_POST["first_name"]);
-            $last_name = mysql_prep($_POST["last_name"]);
-            $hashed_password = password_encrypt($_POST["password"]);
+            $login = htmlentities(mysql_prep($_POST["login"]));
+            $first_name = htmlentities(mysql_prep($_POST["first_name"]));
+            $last_name = htmlentities(mysql_prep($_POST["last_name"]));
+            $password = mysql_prep($_POST["password"]);
+            $hashed_password = password_encrypt($password);
 
             $query = "INSERT INTO admins (";
             $query .= " login, first_name, last_name, hashed_password";
@@ -67,6 +68,7 @@
             </table>
             <br />
             <input type="submit" name="submit" value="Create User" />
+            <a href="index.php"><p>Go back</p></a>
         </form>
         <br />
     </div>
