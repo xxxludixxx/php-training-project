@@ -112,3 +112,4 @@
     </div>
 </div>
 <?php } ?>
+<?php include("../includes/layout/footer.php"); ?>

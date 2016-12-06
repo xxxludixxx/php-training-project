@@ -197,7 +197,7 @@
         $result .= "Accounts";
         $result .= "<ul>";
         $result .= "<li>";
-        $result .= "<a href=\"new_admin.php\">";
+        $result .= "<a href=\"new_user.php\">";
         $result .= "Create admin user";
         $result .= "</a></li>";
         $result .= "<li>";
