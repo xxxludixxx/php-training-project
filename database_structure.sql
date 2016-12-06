@@ -23,7 +23,7 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_id` int(11) NOT NULL,
   `admin_id` int(11) NOT NULL,
-  `post_title` varchar(30) NOT NULL,
+  `post_title` varchar(60) NOT NULL,
   `position` int(3) NOT NULL,
   `visible` tinyint(1) NOT NULL,
   `content` text,

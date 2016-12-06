@@ -49,23 +49,29 @@
         }
     }
 
-    function find_all_categories() {
+    function find_all_categories($public=true) {
         global $connection;
 
         $query = "SELECT * FROM categories ";
+        if ($public) {
+            $query .= "WHERE visible = 1 ";
+        }
         $query .= "ORDER BY position ASC";
         $category_set = mysqli_query($connection, $query);
         confirm_query($category_set);
         return $category_set;
     }
 
-    function find_category_by_id($category_id) {
+    function find_category_by_id($category_id, $public=true) {
         global $connection;
 
         $safe_category_id = mysql_prep($category_id);
 
         $query = "SELECT * FROM categories ";
         $query .= "WHERE id = {$safe_category_id} ";
+        if ($public) {
+            $query .= "AND visible = 1 ";
+        }
         $query .= "LIMIT 1";
         $category_set = mysqli_query($connection, $query);
         confirm_query($category_set);
@@ -84,6 +90,49 @@
             return $current_category;
         }
     }
+
+    function find_posts_for_category($category_id, $public=true) {
+        global $connection;
+
+        $safe_category_id = mysql_prep($category_id);
+
+        $query = "SELECT * ";
+        $query .= "FROM posts ";
+        $query .= "WHERE category_id = {$safe_category_id} ";
+        if ($public) {
+            $query .= "AND visible = 1 ";
+        }
+        $query .= "ORDER BY position ASC";
+        $post_set = mysqli_query($connection, $query);
+        confirm_query($post_set);
+        return $post_set;
+    }
+
+    function find_post_by_id($post_id, $public=true) {
+        global $connection;
+
+        $safe_post_id = mysql_prep($post_id);
+
+        $query = "SELECT * FROM posts ";
+        $query .= "WHERE id = {$safe_post_id} ";
+        if ($public) {
+            $query .= "AND visible = 1 ";
+        }
+        $query .= "LIMIT 1";
+        $post_set = mysqli_query($connection, $query);
+        confirm_query($post_set);
+        if ($post = mysqli_fetch_assoc($post_set)) {
+            return $post;
+        } else {
+            return null;
+        }
+    }
+
+    function find_selected_post() {
+        $current_post = find_post_by_id($_GET["post"], false);
+        return $current_post;
+    }
+
 // NAVIGATION
     function navigation() {
         global $layout_context;
@@ -96,7 +145,7 @@
 
     function public_navigation() {
         $output = "<ul class=\"categories\">";
-        $category_set = find_all_categories();
+        $category_set = find_all_categories(false);
         while ($category = mysqli_fetch_assoc($category_set)) {
             $output .= "<li>";
             $output .= "<a href=\"index.php?category=";

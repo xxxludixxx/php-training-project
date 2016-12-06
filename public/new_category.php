@@ -54,7 +54,7 @@ if(isset($_POST['submit'])) {
                     <td>
                         <select name="position">
                             <?php
-                            $category_set = find_all_categories();
+                            $category_set = find_all_categories($public=false);
                             $category_count = mysqli_num_rows($category_set);
                             for ($count=1; $count <= $category_count + 1; $count++) {
                                 echo "<option value=\"{$count}\">${count}</option>";
@@ -64,7 +64,7 @@ if(isset($_POST['submit'])) {
                     </td>
                 </tr>
                 <tr><td>Visible:</td>
-                    <td><input type="radio" name="visible" value="1" />Yes &nbsp;<input type="radio" name="visible" value="1" />No</td>
+                    <td><input type="radio" name="visible" value="1" />Yes &nbsp;<input type="radio" name="visible" value="0" />No</td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="submit" value="Create Category"></td>
